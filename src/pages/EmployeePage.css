@@ -1,0 +1,109 @@
+/* EmployeePage.css */
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+    margin: 0;
+    padding: 0;
+}
+
+.main-wrapper {
+    max-width: 900px;
+    margin: 40px auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+/* Table style for UL/LI */
+.view ul {
+    display: table;
+    width: 100%;
+    border-collapse: collapse;
+    padding: 0;
+    margin: 0 0 20px 0;
+}
+
+.view li {
+    display: table-row;
+    border-bottom: 1px solid #ddd;
+}
+
+.view li:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+.view li span, .view li input, .view li button {
+    display: table-cell;
+    padding: 10px;
+    vertical-align: middle;
+}
+
+.view li input {
+    width: 90%;
+    padding: 6px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.view li button {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: #fff;
+    transition: background 0.2s;
+    margin-left: 5px;
+}
+
+.view li button:hover {
+    background-color: #0056b3;
+}
+
+/* Header row */
+.view ul li.header {
+    font-weight: bold;
+    background-color: #007bff;
+    color: white;
+}
+
+.add form {
+    display: grid;
+    grid-template-columns: 2fr 2fr 1fr auto; /* FullName | Department | Salary | Button */
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.add input, .add button {
+    display: table-cell;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+.add button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.add button:hover {
+    background-color: #1e7e34;
+}
+
+/* Responsive: stack cells on small screens */
+@media(max-width: 700px){
+    .view li, .view li span, .view li input, .view li button, .add input, .add button {
+        display: block;
+        width: 100%;
+        margin-bottom: 5px;
+    }
+
+    .view li button {
+        margin-left: 0;
+    }
+}
