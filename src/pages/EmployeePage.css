@@ -40,6 +40,19 @@ body {
     vertical-align: middle;
 }
 
+.view-employee {
+  margin-bottom: 10px;
+}
+
+.update {
+ display: flex;
+ flex-direction: column;
+}
+
+.update button {
+  width: 10%;
+}
+
 .view li input {
     width: 90%;
     padding: 6px;

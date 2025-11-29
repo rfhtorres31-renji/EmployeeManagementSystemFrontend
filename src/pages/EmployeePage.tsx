@@ -36,7 +36,7 @@ export default function EmployeePage () {
               newSalary: "",
      })
      const [employees, setEmployees] = useState<EmployeeObj[]>([]);
-     const [editingId, setEditingId ] = useState<string | null>(null);
+     const [editingId, setEditingId] = useState<number | null>(null);
      const [refreshTrigger, setRefreshTrigger] = useState(0);
 
      const apiURL = "http://localhost:3304/api/employees"
@@ -60,7 +60,7 @@ export default function EmployeePage () {
      }, [refreshTrigger]);
      
 
-     const handleChange = (e:any) =>{
+     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) =>{
            setFormData(prev=>(
                 {
                     ...prev,
@@ -103,7 +103,7 @@ export default function EmployeePage () {
     };
 
    
-     const handleEdit = (id: string) => {
+     const handleEdit = (id: number) => {
            setEditingId(id);
      };
 
@@ -153,7 +153,7 @@ export default function EmployeePage () {
 
 
      // For Delete of Employees
-     const handleDelete = (id:string) => {
+     const handleDelete = (id:number) => {
           
           fetch(apiURL+`?Id=${id}`, {
                 "method": "DELETE",
@@ -172,14 +172,14 @@ export default function EmployeePage () {
         <div className="main-wrapper">
             <div className="view">
                 <ul>
-                    { employees.map((employee:any)=>(
+                    { employees.map((employee:EmployeeObj)=>(
 
                        <li key={employee.Id}>
                            {
                             editingId == employee.Id ? 
 
                             // Updating Employee Details
-                            <>
+                            <div className="update">
                               <form onSubmit={(e)=>handleUpdate(e)}>
                                 <input 
                                   name="newFullName"
@@ -205,13 +205,15 @@ export default function EmployeePage () {
                                 <button type="submit">Update</button>
                               </form>
                               <button type="button" onClick={()=>{setEditingId(null)}}>Cancel</button>
-                            </>:
+                            </div>:
 
                             // Viewing Employee Details
-                            <>
+                            <> 
+                            <div className="view-employee">
                                 EmployeeName - {employee.FullName}, Department - {employee.Department}, Salary - ₱{employee.Salary}
                                 <button type="button" onClick={()=>handleEdit(employee.Id)} style={{marginLeft:"10px"}}>Edit</button>
                                 <button type="button" onClick={()=>handleDelete(employee.Id)} style={{marginLeft:"10px"}}>Delete</button>
+                            </div>
                             </>
                            }
                        </li>
